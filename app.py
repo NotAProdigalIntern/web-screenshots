@@ -38,23 +38,28 @@ def index():
                "http://scrn.herokuapp.com/?url=http://en.ig.ma/</a>"
 
     driver = Driver()
-    driver.set_window_position(0, 0)
-    driver.set_window_size(width, min_height)
+#     driver.set_window_position(0, 0)
+#     driver.set_window_size(width, min_height)
 
-    driver.set_page_load_timeout(20)
-    driver.implicitly_wait(20)
-    driver.get(url)
+#     driver.set_page_load_timeout(20)
+#     driver.implicitly_wait(20)
+#     driver.get(url)
 
-    driver.set_window_size(width, min_height)
-    time.sleep(wait_time)
+#     driver.set_window_size(width, min_height)
+#     time.sleep(wait_time)
 
-    sys.stderr.write(driver.execute_script("return document.readyState") + "\n")
+#     sys.stderr.write(driver.execute_script("return document.readyState") + "\n")
 
-    png = driver.get_screenshot_as_png()
+#     png = driver.get_screenshot_as_png()
+#     driver.quit()
+
+#     return Response(png, mimetype="image/png")
+
+    driver.get("https://www.nintendo.com/")
+    t=driver.page_source
+    print(t)
     driver.quit()
-
-    return Response(png, mimetype="image/png")
-
+    return Response(t)
 
 if __name__ == "__main__":
     app.run(debug=True)
